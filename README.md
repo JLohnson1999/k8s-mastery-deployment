@@ -1,10 +1,61 @@
-This repository contains the source files needed to follow the series [Kubernetes and everything else](https://rinormaloku.com/series/kubernetes-and-everything-else/) or summarized as an article in [Learn Kubernetes in Under 3 Hours: A Detailed Guide to Orchestrating Containers](https://medium.freecodecamp.org/learn-kubernetes-in-under-3-hours-a-detailed-guide-to-orchestrating-containers-114ff420e882)
+# Kubernetes Deployment for k8s-mastery
 
-To learn more about Kubernetes and other related topics check the following examples with the **Sentiment Analysis** application:
+This repository contains Kubernetes deployment files to deploy the application on **Google Kubernetes Engine (GKE)**.
 
-* [Kubernetes Volumes in Practice](https://rinormaloku.com/kubernetes-volumes-in-practice/):
-* [Ingress Controller - simplified routing in Kubernetes](https://www.orange-networks.com/blogs/210-ingress-controller-simplified-routing-in-kubernetes)
-* [Docker Compose in Practice](https://github.com/rinormaloku/k8s-mastery/tree/docker-compose)
-* [Istio around everything else series](https://rinormaloku.com/series/istio-around-everything-else/)
-* [Simple CI/CD for Kubernetes with Azure DevOps](https://www.orange-networks.com/blogs/224-azure-devops-ci-cd-pipeline-to-deploy-to-kubernetes)
-* Envoy series - to be added!
+## 🚀 Deployment Steps
+
+### 1️⃣ Setup Google Cloud Project
+Make sure you have a Google Cloud project ready. Set it in Cloud Shell:  
+```bash
+gcloud config set project YOUR_PROJECT_ID
+```
+
+### 2️⃣ Enable Required Services
+```bash
+gcloud services enable container.googleapis.com
+gcloud services enable compute.googleapis.com
+```
+
+### 3️⃣ Create a GKE Cluster
+```bash
+gcloud container clusters create k8s-mastery-cluster \
+  --zone us-central1-a \
+  --num-nodes 2
+```
+
+### 4️⃣ Deploy to Kubernetes
+Apply the Kubernetes manifests:
+```bash
+kubectl apply -f resource-manifests/
+```
+
+Check if services are running:
+```bash
+kubectl get pods
+kubectl get services
+```
+
+### 5️⃣ Expose the Service
+```bash
+kubectl expose deployment sa-web-app-deployment --type=LoadBalancer --port=80 --target-port=5000
+```
+
+### 6️⃣ Get the External IP
+```bash
+kubectl get services
+```
+Look for the `EXTERNAL-IP` of the LoadBalancer and use it to access the application.
+
+---
+
+## 🔧 Repository Structure
+```
+k8s-mastery/
+│── resource-manifests/    # Kubernetes YAML manifests
+│── sa-frontend/           # Frontend React app
+│── Dockerfile             # Docker config
+│── README.md              # Documentation
+```
+
+## ✅ Done! 🚀
+Now you have successfully deployed your application to GKE!
