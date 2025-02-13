@@ -21,8 +21,11 @@ spec:
         app: sa-frontend                                  # 6
     spec:
       containers:
-        - image: rinormaloku/sentiment-analysis-frontend
+        - image: johnson397/sa-frontend:latest
           imagePullPolicy: Always                         # 7
           name: sa-frontend
           ports:
             - containerPort: 80
+          env:
+          - name: REACT_APP_API_URL
+            value: "http://34.42.45.167:8080"

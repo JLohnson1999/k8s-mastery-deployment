@@ -26,6 +26,6 @@ spec:
         name: sa-web-app
         env:
           - name: SA_LOGIC_API_URL
-            value: "http://sa-logic"
+            value: "http://34.118.239.91:5000"
         ports:
           - containerPort: 8080
