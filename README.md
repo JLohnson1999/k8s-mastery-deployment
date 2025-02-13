@@ -48,6 +48,15 @@ Look for the `EXTERNAL-IP` of the LoadBalancer and use it to access the applicat
 
 ---
 
+## 🐳 Docker Hub Images
+The following Docker images were used in this deployment (Make sure they are publicly available):
+
+- **sa-webapp**: [https://hub.docker.com/repository/docker/johnson397/sa-webapp/tags/latest/sha256-ab3d8540c94610d589e23c317575da69b6df7d6737951b6aac791ce381f987a9](https://hub.docker.com/repository/docker/johnson397/sa-webapp/tags/latest/sha256-ab3d8540c94610d589e23c317575da69b6df7d6737951b6aac791ce381f987a9)
+- **sa-frontend**: [https://hub.docker.com/repository/docker/johnson397/sa-frontend/tags/latest/sha256-9a2a1a6226fdecc7dd49464ad86238330cde922d02e17da60fd09d069627508a](https://hub.docker.com/repository/docker/johnson397/sa-frontend/tags/latest/sha256-9a2a1a6226fdecc7dd49464ad86238330cde922d02e17da60fd09d069627508a)
+- **sa-logic**: [https://hub.docker.com/repository/docker/johnson397/sa-logic/tags/latest/sha256-b38e3ff6a97faad96507411a24b9adeadaea339c9898e24dc1ba208072b10152](https://hub.docker.com/repository/docker/johnson397/sa-logic/tags/latest/sha256-b38e3ff6a97faad96507411a24b9adeadaea339c9898e24dc1ba208072b10152)
+
+---
+
 ## 🔧 Repository Structure
 ```
 k8s-mastery/
